@@ -3,7 +3,7 @@
     "IS_HEROKU_SERVER": "1",
     "ALEXA_APP_ID_DEFAULT": "Your Amazon Alexa App ID DEFAULT",
     "ALEXA_APP_ID_OTHER": "Your Amazon Alexa App ID OTHER",
-    "ALEXA_REQUEST_VERIFICATON": false 
+    "ALEXA_REQUEST_VERIFICATON": "False"
   },
   "addons": [
     "papertrail",
