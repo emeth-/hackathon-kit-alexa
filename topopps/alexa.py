@@ -79,11 +79,10 @@ def UnforgivableCurses(session):
     ---
     What are the unforgivable curses
     """
-    message = "The Unforgivable Curses are three of the most powerful and sinister spells known to the wizarding world. "
-    count = 0
-    for curse_name, curse_word in CURSES.items():
-        count += 1
-        message += " {0}. {1}. Cast by saying, {2}. ".format(str(count), curse_name, curse_word)
+    message = "Your top 3 opportunities are as follows."
+    message += "1. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
+    message += "2. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
+    message += "3. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
     return ResponseBuilder.create_response(message=message)
 
 
