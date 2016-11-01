@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 from random import randint
 from collections import OrderedDict
+from rest_framework.serializers import CharField
 from django_alexa.api import fields, intent, ResponseBuilder
 
 
@@ -12,7 +13,7 @@ CURSES["The Imperius Curse"] =  "Imperio"
 CURSES["The Killing Curse"] = "Avada Kedavra"
 
 
-@intent
+@intent(app="hogworts")
 def LaunchRequest(session):
     """
     ---
@@ -31,7 +32,7 @@ class PointsForHouseSlots(fields.AmazonSlots):
     house = fields.AmazonCustom(label="HOUSE_LIST", choices=HOUSES)
 
 
-@intent(slots=PointsForHouseSlots)
+@intent(app="hogworts", slots=PointsForHouseSlots)
 def PointsForHouse(session, points, house):
     """
     Direct response to add points to a house
@@ -71,7 +72,7 @@ def PointsForHouse(session, points, house):
     return ResponseBuilder.create_response(**kwargs)
 
 
-@intent
+@intent(app="hogworts")
 def UnforgivableCurses(session):
     """
     The 3 unforgivable curses
@@ -86,7 +87,7 @@ def UnforgivableCurses(session):
     return ResponseBuilder.create_response(message=message)
 
 
-@intent
+@intent(app="hogworts")
 def MaraudersLaunchRequest(session):
     """
     ---
@@ -100,7 +101,7 @@ def MaraudersLaunchRequest(session):
                                            marauder=True)
 
 
-@intent
+@intent(app="hogworts")
 def MaraudersSessionEndedRequest(session):
     """
     Default End Session Intent
