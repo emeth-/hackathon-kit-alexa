@@ -47,6 +47,28 @@
             "slots": []
         },
         {
+            "intent": "DetailOpportunity",
+            "slots": [
+                {
+                    "name": "oppname",
+                    "type": "OPPNAMES"
+                }
+            ]
+        },
+        {
+            "intent": "UpdateOpportunityCloseDate",
+            "slots": [
+                {
+                    "name": "oppname",
+                    "type": "OPPNAMES"
+                },
+                {
+                    "name": "closedate",
+                    "type": "AMAZON.DATE"
+                }
+            ]
+        },
+        {
             "intent": "MaraudersLaunchRequest",
             "slots": []
         },
