@@ -98,7 +98,7 @@ def DetailOpportunity(session, oppname):
     more info for {oppname}
     more information for {oppname}
     """
-    print "***DetailOpportunity session", dict(session)
+    print "***DetailOpportunity session", dict(session), oppname
     kwargs = {}
     kwargs['launched'] = launched = session.get('launched')
     kwargs['oppname'] = oppname = oppname or session.get('oppname')
