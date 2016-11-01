@@ -39,8 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'corsheaders',
     'django_alexa',
-    'alexa_endpoint',
-    'api'
+    'alexa_endpoint'
 )
 
 MIDDLEWARE_CLASSES = (
