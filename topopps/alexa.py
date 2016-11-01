@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 from random import randint
 from collections import OrderedDict
-from rest_framework.serializers import CharField
 from django_alexa.api import fields, intent, ResponseBuilder
 
 
@@ -73,7 +72,7 @@ def PointsForHouse(session, points, house):
 
 
 @intent(app="topopps")
-def UnforgivableCurses(session):
+def BestOpportunities(session):
     """
     The 3 best opportunities
     ---

@@ -38,8 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'django_alexa',
-    'topopps'
+    'topopps',
+    'django_alexa'
 )
 
 MIDDLEWARE_CLASSES = (

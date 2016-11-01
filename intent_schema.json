@@ -1,0 +1,49 @@
+{
+    "intents": [
+        {
+            "intent": "CancelIntent",
+            "slots": []
+        },
+        {
+            "intent": "StopIntent",
+            "slots": []
+        },
+        {
+            "intent": "HelpIntent",
+            "slots": []
+        },
+        {
+            "intent": "SessionEndedRequest",
+            "slots": []
+        },
+        {
+            "intent": "LaunchRequest",
+            "slots": []
+        },
+        {
+            "intent": "PointsForHouse",
+            "slots": [
+                {
+                    "name": "points",
+                    "type": "AMAZON.NUMBER"
+                },
+                {
+                    "name": "house",
+                    "type": "HOUSE_LIST"
+                }
+            ]
+        },
+        {
+            "intent": "BestOpportunities",
+            "slots": []
+        },
+        {
+            "intent": "MaraudersLaunchRequest",
+            "slots": []
+        },
+        {
+            "intent": "MaraudersSessionEndedRequest",
+            "slots": []
+        }
+    ]
+}
