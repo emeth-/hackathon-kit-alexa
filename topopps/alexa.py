@@ -75,9 +75,9 @@ def PointsForHouse(session, points, house):
 @intent(app="topopps")
 def UnforgivableCurses(session):
     """
-    The 3 unforgivable curses
+    The 3 best opportunities
     ---
-    What are the unforgivable curses
+    What are my top opportunities
     """
     message = "Your top 3 opportunities are as follows."
     message += "1. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
