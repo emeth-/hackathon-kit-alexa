@@ -31,7 +31,7 @@ class PointsForHouseSlots(fields.AmazonSlots):
     house = fields.AmazonCustom(label="HOUSE_LIST", choices=HOUSES)
 
 
-@intent(slots=PointsForHouseSlots)
+@intent
 def PointsForHouse(session, points, house):
     """
     Direct response to add points to a house
