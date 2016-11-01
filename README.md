@@ -44,6 +44,9 @@ Visit http://127.0.0.1:8000/admin/
 ```
 
 ##### Notes
+To setup app:
+https://developer.amazon.com/edw/home.html
+
 A skill can have a total of 50,000 custom slot values, totaled across all custom slots used in the interaction model.
 
 Note that a custom slot type is not the equivalent of an enumeration. Values outside the list may still be returned if recognized by the spoken language understanding system. Although input to a custom slot type is weighted towards the values in the list, it is not constrained to just the items on the list.
