@@ -16,36 +16,18 @@ Hackathon-kit
 $ sudo pip install -r requirements.txt
 $ heroku apps:create hackathon-demo
 $ heroku config:set IS_HEROKU_SERVER=1
+$ heroku config:set ALEXA_APP_ID_topopps=amzn1.ask.skill.b9b3ac07-6eeb-4534-bc3f-b0b2073363e5
+(replace the above ID with your own)
 $ git push heroku master
 ```
 
-##### Migrations
-Create new migrations
-```
-$ python manage.py makemigrations
-```
-
-Run migrations
-```
-$ python manage.py migrate
-```
-
-##### Run Server
-```
-$ python manage.py runserver
-Visit http://127.0.0.1:8000/static/index.html
-```
-
-##### Admin Panel
-Create a superuser
-```
-$ python manage.py createsuperuser
-Visit http://127.0.0.1:8000/admin/
-```
-
-##### Notes
+##### Alexa SETUP
 To setup app:
 https://developer.amazon.com/edw/home.html
+
+Follow screenshots in setup_screenshots folder. Important part is that the contents of intent_schema.json, opp_name_list.txt, and utterances_schema.txt are uploaded into the appropriate spots on #2 Interaction Model screen.
+
+##### Notes
 
 A skill can have a total of 50,000 custom slot values, totaled across all custom slots used in the interaction model.
 
