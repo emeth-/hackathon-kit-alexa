@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 from django_alexa.api import intent, ResponseBuilder
+import dateutil.parser
 
 @intent(app="topopps")
 def LaunchRequest(session):
@@ -46,6 +47,7 @@ def UpdateOpportunityCloseDate(session, closedate, oppname):
     print "***DetailOpportunity", dict(session), closedate, oppname
     #closedate = "2016-11-02"
     #oppname = "this week"
+    date_english = dateutil.parser.parse(closedate).strftime("%B %d, %Y")
     kwargs = {}
     kwargs['launched'] = launched = session.get('launched')
     kwargs['oppname'] = oppname = oppname or session.get('oppname')
@@ -53,7 +55,7 @@ def UpdateOpportunityCloseDate(session, closedate, oppname):
     if launched:
         kwargs['reprompt'] = "What opportunity would you like to update?"
         kwargs['end_session'] = False
-    kwargs['message'] = str(oppname)+"'s close date has been updated to "+str(closedate)
+    kwargs['message'] = str(oppname)+"'s close date has been updated to "+str(date_english)
     kwargs.pop("oppname")
     kwargs.pop("closedate")
     return ResponseBuilder.create_response(**kwargs)
