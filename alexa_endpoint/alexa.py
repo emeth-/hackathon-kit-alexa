@@ -2,7 +2,7 @@ from django_alexa.api import fields, intent, ResponseBuilder
 
 HOUSES = ("gryffindor", "hufflepuff", "ravenclaw", "slytherin")
 
-@intent
+@intent(app="topopps")
 def LaunchRequest(session):
     """
     Hogwarts is a go
@@ -24,7 +24,7 @@ class PointsForHouseSlots(fields.AmazonSlots):
     points = fields.AmazonNumber()
 
 
-@intent(slots=PointsForHouseSlots)
+@intent(app="topopps", slots=PointsForHouseSlots)
 def AddPointsToHouse(session, house, points):
     """
     Direct response to add points to a house
