@@ -84,7 +84,7 @@ def MimicMe(session, house):
     if launched:
         kwargs['reprompt'] = "What house would you like to give points to?"
         kwargs['end_session'] = False
-    kwargs['message'] = "You asked me to open opportunity named {1}.".format(house)
+    kwargs['message'] = "You asked me to open opportunity named "+str(house)+"."
     kwargs.pop("house")
     return ResponseBuilder.create_response(**kwargs)
 
