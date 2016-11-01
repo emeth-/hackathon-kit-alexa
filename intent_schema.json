@@ -34,6 +34,15 @@
             ]
         },
         {
+            "intent": "MimicMe",
+            "slots": [
+                {
+                    "name": "house",
+                    "type": "HOUSE_LIST"
+                }
+            ]
+        },
+        {
             "intent": "BestOpportunities",
             "slots": []
         },

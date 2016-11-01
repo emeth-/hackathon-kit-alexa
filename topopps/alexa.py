@@ -70,6 +70,23 @@ def PointsForHouse(session, points, house):
         kwargs.pop("points")
     return ResponseBuilder.create_response(**kwargs)
 
+@intent(app="topopps")
+def MimicMe(session, house):
+    """
+    Detect what word the person said and repeat it
+    ---
+    open opportunity named {house}
+    """
+    print "***mimicme session", dict(session)
+    kwargs = {}
+    kwargs['launched'] = launched = session.get('launched')
+    kwargs['house'] = house = house or session.get('house')
+    if launched:
+        kwargs['reprompt'] = "What house would you like to give points to?"
+        kwargs['end_session'] = False
+    kwargs['message'] = "You asked me to open opportunity named {1}.".format(house)
+    kwargs.pop("house")
+    return ResponseBuilder.create_response(**kwargs)
 
 @intent(app="topopps")
 def BestOpportunities(session):

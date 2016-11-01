@@ -14,6 +14,7 @@ PointsForHouse {points} {house}
 PointsForHouse {points} points {house}
 PointsForHouse add {points} points to {house}
 PointsForHouse give {points} points to {house}
+MimicMe open opportunity named {house}
 BestOpportunities what are my top opportunities
 BestOpportunities what are my best opportunities
 MaraudersLaunchRequest i solemnly swear i am up to no good
