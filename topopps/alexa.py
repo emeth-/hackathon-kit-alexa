@@ -79,9 +79,9 @@ def BestOpportunities(session):
     What are my top opportunities
     """
     message = "Your top 3 opportunities are as follows."
-    message += "1. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
-    message += "2. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
-    message += "3. United Oil Workers. Currently in Pending and marked as Commit, expected to close on 12/12/12."
+    message += " 1. United Oil Workers. Currently in Pending and marked as Commit, expected to close on December 12, 2012."
+    message += " 2. United Oil Workers. Currently in Pending and marked as Commit, expected to close on December 12, 2012."
+    message += " 3. United Oil Workers. Currently in Pending and marked as Commit, expected to close on December 12, 2012."
     return ResponseBuilder.create_response(message=message)
 
 
