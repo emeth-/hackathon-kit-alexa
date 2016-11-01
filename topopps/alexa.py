@@ -1,16 +1,5 @@
 from __future__ import absolute_import
-from random import randint
-from collections import OrderedDict
-from django_alexa.api import fields, intent, ResponseBuilder
-
-
-HOUSES = ("gryffindor", "hufflepuff", "ravenclaw", "slytherin")
-# Ordered
-CURSES = OrderedDict()
-CURSES["The Cruciatus Curse"] = "Crucio"
-CURSES["The Imperius Curse"] =  "Imperio"
-CURSES["The Killing Curse"] = "Avada Kedavra"
-
+from django_alexa.api import intent, ResponseBuilder
 
 @intent(app="topopps")
 def LaunchRequest(session):
@@ -18,75 +7,9 @@ def LaunchRequest(session):
     ---
     launch
     """
-    message = "Welcome to Hog warts school of witchcraft and wizardry!"
-    reprompt = "What house would you like to give points to?"
-    return ResponseBuilder.create_response(message=message,
-                                           reprompt=reprompt,
-                                           end_session=False,
-                                           launched=True)
-
-
-class PointsForHouseSlots(fields.AmazonSlots):
-    points = fields.AmazonNumber()
-    house = fields.AmazonCustom(label="HOUSE_LIST", choices=HOUSES)
-
-
-@intent(app="topopps", slots=PointsForHouseSlots)
-def PointsForHouse(session, points, house):
-    """
-    Direct response to add points to a house
-    ---
-    {house}
-    {points}
-    {points} {house}
-    {points} points {house}
-    add {points} points to {house}
-    give {points} points to {house}
-    """
-    kwargs = {}
-    kwargs['launched'] = launched = session.get('launched')
-    kwargs['marauder'] = marauder = session.get('marauder')
-    kwargs['points'] = points = points or session.get('points')
-    kwargs['house'] = house = house or session.get('house')
-    if points is None:
-        kwargs['message'] = "How many points?".format(house)
-        kwargs["end_session"] = False
-        return ResponseBuilder.create_response(**kwargs)
-    if house is None:
-        kwargs['message'] = "Which house?".format(points)
-        kwargs["end_session"] = False
-        return ResponseBuilder.create_response(**kwargs)
-    if marauder:
-        kwargs['message'] = "messers can not give points to houses, we lose them in the name of mischief!"
-        kwargs['message'] += " {0} points removed from house {1}.".format(randint(1,10), house or HOUSES[randint(0, 3)])
-        kwargs['reprompt'] = "What mischief brings you here?"
-        kwargs['end_session'] = False
-    else:
-        if launched:
-            kwargs['reprompt'] = "What house would you like to give points to?"
-            kwargs['end_session'] = False
-        kwargs['message'] = "{0} points added to house {1}.".format(points, house)
-        kwargs.pop("house")
-        kwargs.pop("points")
-    return ResponseBuilder.create_response(**kwargs)
-
-@intent(app="topopps")
-def MimicMe(session, house):
-    """
-    Detect what word the person said and repeat it
-    ---
-    open opportunity named {house}
-    """
-    print "***mimicme session", dict(session)
-    kwargs = {}
-    kwargs['launched'] = launched = session.get('launched')
-    kwargs['house'] = house = house or session.get('house')
-    if launched:
-        kwargs['reprompt'] = "What house would you like to give points to?"
-        kwargs['end_session'] = False
-    kwargs['message'] = "You asked me to open opportunity named "+str(house)+"."
-    kwargs.pop("house")
-    return ResponseBuilder.create_response(**kwargs)
+    message = "Welcome to TopOPPS!"
+    reprompt = "What can I help you with today?"
+    return ResponseBuilder.create_response(message=message, reprompt=reprompt, end_session=False, launched=True)
 
 @intent(app="topopps")
 def DetailOpportunity(session, oppname):
@@ -99,6 +22,7 @@ def DetailOpportunity(session, oppname):
     more information for {oppname}
     """
     print "***DetailOpportunity session", dict(session), oppname
+    #oppname = "Putin's poutine"
     kwargs = {}
     kwargs['launched'] = launched = session.get('launched')
     kwargs['oppname'] = oppname = oppname or session.get('oppname')
@@ -120,6 +44,8 @@ def UpdateOpportunityCloseDate(session, closedate, oppname):
     for {oppname} set close date to {closedate}
     """
     print "***DetailOpportunity", dict(session), closedate, oppname
+    #closedate = "2016-11-02"
+    #oppname = "this week"
     kwargs = {}
     kwargs['launched'] = launched = session.get('launched')
     kwargs['oppname'] = oppname = oppname or session.get('oppname')
@@ -145,26 +71,3 @@ def BestOpportunities(session):
     message += " 3. United Oil Workers. Currently in Pending and marked as Commit, expected to close on December 12, 2012."
     return ResponseBuilder.create_response(message=message)
 
-
-@intent(app="topopps")
-def MaraudersLaunchRequest(session):
-    """
-    ---
-    i solemnly swear i am up to no good
-    """
-    message = "Messers Moony, Wormtail, Padfoot and Prongs are proud to present the Marauders Map!"
-    reprompt = "What mischief brings you here?"
-    return ResponseBuilder.create_response(message=message,
-                                           reprompt=reprompt,
-                                           end_session=False,
-                                           marauder=True)
-
-
-@intent(app="topopps")
-def MaraudersSessionEndedRequest(session):
-    """
-    Default End Session Intent
-    ---
-    mischief managed
-    """
-    return ResponseBuilder.create_response()
